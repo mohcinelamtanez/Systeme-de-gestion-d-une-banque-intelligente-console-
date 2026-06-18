@@ -45,5 +45,11 @@ public class ServiceBancaire {
             return null ;  
      }
     
-    
+    public void ouvrirCompte(Client client , Compte c , double solde ){ 
+        c.setDateOuverture(LocalDate.now());
+        c.setNumeroCompte("12333333"); 
+        c.setProprietaire(client.getNom());
+        c.setSolde(solde);
+        
+    }
 }
