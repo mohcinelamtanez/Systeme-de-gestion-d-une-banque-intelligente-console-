@@ -9,5 +9,10 @@ package com.mycompany.banque;
  * @author USER
  */
 public enum TypeOperation {
-    
+    depot , 
+    retrait ,
+    virementEntrant , 
+    virementSortant , 
+    frais , 
+    interet
 }

@@ -9,5 +9,12 @@ package com.mycompany.banque;
  * @author USER
  */
 public class ComptePro {
-    
+   private static  int plafondTransactionQuotidien  = 10 ;
+   
+   public int getplafondTransactionQuotidien(){ 
+      return ComptePro.plafondTransactionQuotidien ;
+   }
+   
+   
+   
 }

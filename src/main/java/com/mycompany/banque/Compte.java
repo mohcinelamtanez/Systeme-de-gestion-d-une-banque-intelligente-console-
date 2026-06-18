@@ -49,6 +49,7 @@ public String getProprietaire() {
 public void setProprietaire(String proprietaire) {
     this.proprietaire = proprietaire ; 
 }
+
  
 
 }

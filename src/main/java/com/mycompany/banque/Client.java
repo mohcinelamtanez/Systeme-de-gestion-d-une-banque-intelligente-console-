@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.banque;
-import java.time.* ; 
+import java.time.* ;
+import java.util.*; 
 /**
  *
  * @author USER
@@ -15,7 +16,7 @@ public class Client {
    private LocalDate dateNaissance ; 
    private String adresseMail ; 
    private LocalDate dateCreation ; 
-   
+   private List<Compte> comptes; 
    
    public int getId() { 
        return this.Id ; 
@@ -63,5 +64,13 @@ public class Client {
    
    public void setDateCreation(LocalDate dateCreation ){
        this.dateCreation = dateCreation  ;
+   }
+   
+   public List<Compte> getcomptesClient(){ 
+       return this.comptes; 
+   }
+   
+   public boolean setCompte(Compte c ){ 
+       return this.comptes.add(c) ; 
    }
 }
