@@ -21,7 +21,7 @@ public class Banque {
           Compte B = new CompteEpargne(); 
           Compte C = new ComptePro(); 
           Set<Compte> comptes = new HashSet<>(List.of(A , B , C));
-          
+          List<Transaction> transactions = new ArrayList<>() ; 
           clientA.setComptesClient(comptes); 
           
          

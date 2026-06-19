@@ -55,13 +55,16 @@ public List<Transaction> getTransactions(){
     return this.historiqueTransaction ; 
 }
 
-public void setTransaction(List<Transaction> transactions){
-    this.historiqueTransaction = transactions ; 
+public void  setTransaction(List<Transaction> transactions){
+    this.historiqueTransaction = transactions ;    
 }
 
 public void deposer(double montant) { 
       this.solde = solde + montant ; 
      }
  
+public boolean ajouterTransaction(Transaction transaction) { 
+   return this.historiqueTransaction.add(transaction) ; 
+}
 
 }

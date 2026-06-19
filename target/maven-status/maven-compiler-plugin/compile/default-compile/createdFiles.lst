@@ -1,5 +1,4 @@
 com\mycompany\banque\Compte.class
-com\mycompany\banque\ComptePro.class
 com\mycompany\banque\Client.class
 com\mycompany\banque\Banque.class
 com\mycompany\banque\CompteEpargne.class

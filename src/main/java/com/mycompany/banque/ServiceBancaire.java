@@ -71,22 +71,14 @@ public class ServiceBancaire {
 } 
       
      public void effectuerTransaction(Transaction transaction , Compte compte) { 
-         
+          
          if(peutEffectuerTransaction()){
-          b.transactions.add(transaction) ; 
-          compte.setTransaction(b.transactions);
+          compte.ajouterTransaction(transaction);  
           System.out.println("transaction ajouté avec succès" ) ;    
             }else System.out.println("echec lors de l'jout de la transaction") ; 
           } 
 
-     public boolean  peutEffectuerTransaction() { 
-          return plafondTransactionQuotidien > calculerNombreTransactionparJour() ; } 
-  
-     public int calculerNombreTransactionparJour() { 
-      List<Transaction> filteredTransactions =   transactions.stream().filter(transaction -> transaction.getdate() ==  Localedate.now()).toList() ; 
-
-         return filteredTransactions.size() ; 
-       }
+   
   
      
 
@@ -108,4 +100,4 @@ public class ServiceBancaire {
         }else if(montant < c.getsolde()) { 
             throw new InsufficientBalanceException( "Le compte n'appartient pas à ce client" );
         }else throw new AccountNotFoundException("compte introuvable") ; }
-}
+} 
