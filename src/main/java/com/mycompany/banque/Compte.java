@@ -15,7 +15,8 @@ public abstract class Compte {
  private String proprietaire;
  private LocalDate dateOuverture ; 
  private List<Transaction> historiqueTransaction; 
-
+ 
+  
  public String getNumeroCompte(){
      return this.numeroCompte ; 
  }
@@ -50,6 +51,17 @@ public void setProprietaire(String proprietaire) {
     this.proprietaire = proprietaire ; 
 }
 
+public List<Transaction> getTransactions(){ 
+    return this.historiqueTransaction ; 
+}
+
+public void setTransaction(List<Transaction> transactions){
+    this.historiqueTransaction = transactions ; 
+}
+
+public void deposer(double montant) { 
+      this.solde = solde + montant ; 
+     }
  
 
 }

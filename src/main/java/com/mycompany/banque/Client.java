@@ -16,7 +16,7 @@ public class Client {
    private LocalDate dateNaissance ; 
    private String adresseMail ; 
    private LocalDate dateCreation ; 
-   private List<Compte> comptes; 
+   private Set<Compte> comptes; 
    
    public int getId() { 
        return this.Id ; 
@@ -66,11 +66,14 @@ public class Client {
        this.dateCreation = dateCreation  ;
    }
    
-   public List<Compte> getcomptesClient(){ 
+   public Set<Compte> getcomptesClient(){ 
        return this.comptes; 
    }
    
-   public boolean setCompte(Compte c ){ 
-       return this.comptes.add(c) ; 
+   public void setComptesClient(Set<Compte> comptes){ 
+       this.comptes = comptes ; 
    }
+   
+       
+   
 }

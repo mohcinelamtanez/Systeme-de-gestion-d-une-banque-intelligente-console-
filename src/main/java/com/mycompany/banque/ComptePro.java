@@ -8,7 +8,7 @@ package com.mycompany.banque;
  *
  * @author USER
  */
-public class ComptePro {
+public class ComptePro extends Compte{
    private static  int plafondTransactionQuotidien  = 10 ;
    
    public int getplafondTransactionQuotidien(){ 

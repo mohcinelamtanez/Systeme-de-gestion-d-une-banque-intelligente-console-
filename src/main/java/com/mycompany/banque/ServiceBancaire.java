@@ -61,7 +61,8 @@ public class ServiceBancaire {
     
       public Compte AccountByNumber(String numeroCompte) {
           
-      List<Compte> foundedAccount = comptes.stream().
+      List<Compte> foundedAccount = Banque.clientA.getcomptesClient().
+                                            stream().
                                             filter(compte -> compte.getNumeroCompte().equals(numeroCompte)).
                                             toList() ; 
 
@@ -69,9 +70,11 @@ public class ServiceBancaire {
   
 } 
       
-     public void effectuerTransaction(Transaction transaction) { 
+     public void effectuerTransaction(Transaction transaction , Compte compte) { 
+         
          if(peutEffectuerTransaction()){
-           transactions.add(transaction);
+          b.transactions.add(transaction) ; 
+          compte.setTransaction(b.transactions);
           System.out.println("transaction ajouté avec succès" ) ;    
             }else System.out.println("echec lors de l'jout de la transaction") ; 
           } 

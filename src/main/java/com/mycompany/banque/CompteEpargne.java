@@ -8,6 +8,6 @@ package com.mycompany.banque;
  *
  * @author USER
  */
-public class CompteEpargne {
+public class CompteEpargne extends Compte{
     
 }
