@@ -10,6 +10,7 @@ import java.util.*;
  * @author USER
  */
 public class ServiceBancaire {
+    
      // logique pour ajouter un client 
     public void ajouterClient(String nom , String prenom , LocalDate dateNaissance , String adresseMail){ 
         Client newClient = new Client() ; 
@@ -26,7 +27,7 @@ public class ServiceBancaire {
     // logique pour supprimer un client 
     
     public void SupprimerClient(int id) {
-        boolean exists = Banque.clients.stream().anyMatch(client -> client.getId() == id) ; 
+        boolean exists = DataInit.clients.stream().anyMatch(client -> client.getId() == id) ; 
         
         if(exists){ 
             Banque.clients.removeIf(client -> client.getId() == id) ; 
