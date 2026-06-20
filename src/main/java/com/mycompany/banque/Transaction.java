@@ -15,9 +15,22 @@ public class Transaction {
     private TypeOperation typeOperation ; 
     private Compte compteSource ; 
     private Compte compteDestination ; 
-    private String description ; 
-    
-    public Transaction(int idTransaction , double montant , LocalDateTime dateHeureTransaction , TypeOperation typeOperation , Compte compteSource , Compte compteDestination  , String description){ 
+    private String description ;
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "idTransaction=" + idTransaction +
+                ", montant=" + montant +
+                ", dateHeureTransaction=" + dateHeureTransaction +
+                ", typeOperation=" + typeOperation +
+                ", compteSource=" + compteSource +
+                ", compteDestination=" + compteDestination +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
+    public Transaction(int idTransaction , double montant , LocalDateTime dateHeureTransaction , TypeOperation typeOperation , Compte compteSource , Compte compteDestination  , String description){
         this.idTransaction = idTransaction ; 
         this.montant = montant ; 
         this.dateHeureTransaction = dateHeureTransaction ; 

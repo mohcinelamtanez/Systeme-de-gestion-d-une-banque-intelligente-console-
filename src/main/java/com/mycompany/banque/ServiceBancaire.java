@@ -9,7 +9,7 @@ import java.util.*;
  *
  * @author USER
  */
-public class ServiceBancaire {
+/*public class ServiceBancaire {
     
      // logique pour ajouter un client 
     public void ajouterClient(String nom , String prenom , LocalDate dateNaissance , String adresseMail){ 
@@ -101,4 +101,4 @@ public class ServiceBancaire {
         }else if(montant < c.getsolde()) { 
             throw new InsufficientBalanceException( "Le compte n'appartient pas à ce client" );
         }else throw new AccountNotFoundException("compte introuvable") ; }
-} 
+} */

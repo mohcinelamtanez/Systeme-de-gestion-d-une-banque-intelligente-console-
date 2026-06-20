@@ -84,7 +84,17 @@ public class Client {
    public void setComptesClient(Set<Compte> comptes){ 
        this.comptes = comptes ; 
    }
-   
-       
-   
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "Id=" + Id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", dateNaissance=" + dateNaissance +
+                ", adresseMail='" + adresseMail + '\'' +
+                ", dateCreation=" + dateCreation +
+                ", comptes=" + comptes +
+                '}';
+    }
 }

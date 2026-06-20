@@ -68,4 +68,14 @@ public boolean ajouterTransaction(Transaction transaction) {
    return this.historiqueTransaction.add(transaction) ; 
 }
 
+    @Override
+    public String toString() {
+        return "Compte{" +
+                "numeroCompte='" + numeroCompte + '\'' +
+                ", solde=" + solde +
+                ", proprietaire='" + proprietaire + '\'' +
+                ", dateOuverture=" + dateOuverture +
+                ", historiqueTransaction=" + historiqueTransaction +
+                '}';
+    }
 }
