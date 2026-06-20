@@ -10,30 +10,18 @@ import java.time.* ;
  */
 public class Transaction {
     private int idTransaction ; 
-    private double montant ; 
-    private LocalDateTime dateHeureTransaction ; 
+    private double montant ;
+    private LocalDateTime timeTransaction ;
     private TypeOperation typeOperation ; 
     private Compte compteSource ; 
     private Compte compteDestination ; 
     private String description ;
 
-    @Override
-    public String toString() {
-        return "Transaction{" +
-                "idTransaction=" + idTransaction +
-                ", montant=" + montant +
-                ", dateHeureTransaction=" + dateHeureTransaction +
-                ", typeOperation=" + typeOperation +
-                ", compteSource=" + compteSource +
-                ", compteDestination=" + compteDestination +
-                ", description='" + description + '\'' +
-                '}';
-    }
 
     public Transaction(int idTransaction , double montant , LocalDateTime dateHeureTransaction , TypeOperation typeOperation , Compte compteSource , Compte compteDestination  , String description){
         this.idTransaction = idTransaction ; 
         this.montant = montant ; 
-        this.dateHeureTransaction = dateHeureTransaction ; 
+        this.timeTransaction = dateHeureTransaction ;
         this.typeOperation = typeOperation ;
         this.compteSource = compteSource ; 
         this.compteDestination = compteDestination ; 
@@ -56,12 +44,12 @@ public class Transaction {
         this.montant = montant ; 
     }
     
-    public LocalDateTime getDateHeureTransaction(){ 
-        return this.dateHeureTransaction ; 
+    public LocalDateTime getTimeTransaction(){
+        return this.timeTransaction ;
     }
     
-    public void setDateHeureTransaction(LocalDateTime dateHeureTransaction ) {
-        this.dateHeureTransaction = dateHeureTransaction ; 
+    public void setTimeTransaction(LocalDateTime timeTransaction ) {
+        this.timeTransaction = timeTransaction ;
     }
     
     public String getDescription(){ 
@@ -70,5 +58,22 @@ public class Transaction {
     
     public void setDescription(String description){ 
         this.description = description ; 
+    }
+
+    public TypeOperation getTypeOperation(){
+        return this.typeOperation;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "idTransaction=" + idTransaction +
+                ", montant=" + montant +
+                ", dateHeureTransaction=" + timeTransaction +
+                ", typeOperation=" + typeOperation +
+                ", compteSource=" + compteSource +
+                ", compteDestination=" + compteDestination +
+                ", description='" + description + '\'' +
+                '}';
     }
 }
