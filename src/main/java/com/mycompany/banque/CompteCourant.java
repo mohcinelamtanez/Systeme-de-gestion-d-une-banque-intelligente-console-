@@ -13,6 +13,8 @@ import java.util.List;
  */
 public class CompteCourant extends Compte {
     
+    private final double fraisMensuel = 20 ;  
+    private final double limiteDecouvert = 40; 
     
     public CompteCourant
         (String numeroCompte , double solde , String proprietaire , LocalDate dateOuverture , List<Transaction> historiqueTransaction){

@@ -12,22 +12,14 @@ import java.time.LocalDate ;
 public class ComptePro extends Compte{
    private static  int plafondTransactionQuotidien  = 10 ;
    
-   public int getplafondTransactionQuotidien(){ 
-      return ComptePro.plafondTransactionQuotidien ;
-   }
-   
-   public boolean  peutEffectuerTransaction() { 
-          return plafondTransactionQuotidien > calculerNombreTransactionparJour() ; 
-   }
-   
-     public int calculerNombreTransactionparJour() { 
-         LocalDate localdate = LocalDate.now() ;
-         List<Transaction> filteredTransactions =   transactions.stream().
-                                                    filter(transaction -> transaction.getdate().equals(localdate)).
-                                                    toList() ; 
-
-         return filteredTransactions.size() ; 
-       }
-   
+  
+    public ComptePro
+        (String numeroCompte , double solde , String proprietaire , LocalDate dateOuverture , List<Transaction> historiqueTransaction){
+     super.numeroCompte = numeroCompte ; 
+     super.solde = solde ; 
+     super.proprietaire = proprietaire ; 
+     super.dateOuverture = dateOuverture ; 
+     super.historiqueTransaction = historiqueTransaction ; 
+ }
    
 }

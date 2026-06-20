@@ -10,9 +10,7 @@ C:\Users\USER\Desktop\PracticeJava\Banque\src\main\java\com\mycompany\banque\exc
 C:\Users\USER\Desktop\PracticeJava\Banque\src\main\java\com\mycompany\banque\exception\InsufficientBalanceException.java
 C:\Users\USER\Desktop\PracticeJava\Banque\src\main\java\com\mycompany\banque\exception\InvalidAgeException.java
 C:\Users\USER\Desktop\PracticeJava\Banque\src\main\java\com\mycompany\banque\exception\InvalidTransactionException.java
-C:\Users\USER\Desktop\PracticeJava\Banque\src\main\java\com\mycompany\banque\Model\ClientModel.java
-C:\Users\USER\Desktop\PracticeJava\Banque\src\main\java\com\mycompany\banque\Model\CompteModel.java
-C:\Users\USER\Desktop\PracticeJava\Banque\src\main\java\com\mycompany\banque\Model\TransactionModel.java
+C:\Users\USER\Desktop\PracticeJava\Banque\src\main\java\com\mycompany\banque\Model\ClientRepository.java
 C:\Users\USER\Desktop\PracticeJava\Banque\src\main\java\com\mycompany\banque\ServiceBancaire.java
 C:\Users\USER\Desktop\PracticeJava\Banque\src\main\java\com\mycompany\banque\Transaction.java
 C:\Users\USER\Desktop\PracticeJava\Banque\src\main\java\com\mycompany\banque\TypeOperation.java
