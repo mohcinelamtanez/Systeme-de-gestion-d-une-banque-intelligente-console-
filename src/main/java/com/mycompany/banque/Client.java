@@ -18,6 +18,17 @@ public class Client {
    private LocalDate dateCreation ; 
    private Set<Compte> comptes; 
    
+   public Client(int Id , String nom , String prenom , LocalDate dateNaissance , String adresseMail , LocalDate dateCreation , Set<Compte> comptes){ 
+       this.Id = Id ; 
+       this.nom = nom ; 
+       this.prenom = prenom ; 
+       this.dateNaissance = dateNaissance ; 
+       this.adresseMail = adresseMail ; 
+       this.dateCreation  = dateCreation ; 
+       this.comptes = comptes ; 
+   }
+   
+   
    public int getId() { 
        return this.Id ; 
    }

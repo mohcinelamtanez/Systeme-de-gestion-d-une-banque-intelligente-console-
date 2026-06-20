@@ -17,6 +17,16 @@ public class Transaction {
     private Compte compteDestination ; 
     private String description ; 
     
+    public Transaction(int idTransaction , double montant , LocalDateTime dateHeureTransaction , TypeOperation typeOperation , Compte compteSource , Compte compteDestination  , String description){ 
+        this.idTransaction = idTransaction ; 
+        this.montant = montant ; 
+        this.dateHeureTransaction = dateHeureTransaction ; 
+        this.typeOperation = typeOperation ;
+        this.compteSource = compteSource ; 
+        this.compteDestination = compteDestination ; 
+        this.description = description ;        
+        
+    }
     public int getIdTransaction(){ 
         return this.idTransaction;  
     }

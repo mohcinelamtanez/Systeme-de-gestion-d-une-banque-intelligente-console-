@@ -10,13 +10,14 @@ import java.util.*;
  * @author USER
  */
 public abstract class Compte {
- private String numeroCompte ; 
- private double solde ; 
- private String proprietaire;
- private LocalDate dateOuverture ; 
- private List<Transaction> historiqueTransaction; 
+ protected String numeroCompte ; 
+ protected double solde ; 
+ protected String proprietaire;
+ protected LocalDate dateOuverture ; 
+ protected List<Transaction> historiqueTransaction; 
  
   
+ 
  public String getNumeroCompte(){
      return this.numeroCompte ; 
  }

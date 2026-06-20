@@ -1,7 +1,0 @@
-com\mycompany\banque\Compte.class
-com\mycompany\banque\Client.class
-com\mycompany\banque\Banque.class
-com\mycompany\banque\CompteEpargne.class
-com\mycompany\banque\TypeOperation.class
-com\mycompany\banque\Transaction.class
-com\mycompany\banque\CompteCourant.class

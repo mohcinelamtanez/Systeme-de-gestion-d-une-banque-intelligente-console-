@@ -4,10 +4,22 @@
  */
 package com.mycompany.banque;
 
+import java.time.LocalDate;
+import java.util.List;
+
 /**
  *
  * @author USER
  */
 public class CompteCourant extends Compte {
     
+    
+    public CompteCourant
+        (String numeroCompte , double solde , String proprietaire , LocalDate dateOuverture , List<Transaction> historiqueTransaction){
+     super.numeroCompte = numeroCompte ; 
+     super.solde = solde ; 
+     super.proprietaire = proprietaire ; 
+     super.dateOuverture = dateOuverture ; 
+     super.historiqueTransaction = historiqueTransaction ; 
+ }
 }

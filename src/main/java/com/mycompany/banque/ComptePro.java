@@ -22,7 +22,9 @@ public class ComptePro extends Compte{
    
      public int calculerNombreTransactionparJour() { 
          LocalDate localdate = LocalDate.now() ;
-      List<Transaction> filteredTransactions =   transactions.stream().filter(transaction -> transaction.getdate().equals(localdate)).toList() ; 
+         List<Transaction> filteredTransactions =   transactions.stream().
+                                                    filter(transaction -> transaction.getdate().equals(localdate)).
+                                                    toList() ; 
 
          return filteredTransactions.size() ; 
        }
