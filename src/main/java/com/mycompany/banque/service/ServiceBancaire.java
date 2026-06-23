@@ -5,6 +5,7 @@
 package com.mycompany.banque.service;
 
 import com.mycompany.banque.Client;
+import com.mycompany.banque.Compte;
 import com.mycompany.banque.Data.DataInitializer;
 import com.mycompany.banque.repository.Implementation.InMemoryClientRepository;
 import com.mycompany.banque.repository.Implementation.InMemoryCompteRepository;
@@ -36,5 +37,23 @@ public class ServiceBancaire {
               clientRepo.save(client);
       }
 
+     public void supprimerClient(Client client) {
+         if (clientRepo.existsById(client.getId())) {
+             clientRepo.delete(client);
+         } else System.out.println("client introuvable :! ");
+     }
+
+     public void ouvrirCompte(Client client , Compte c) {
+          if(clientRepo.existsById(client.getId())){
+              compteRepo.save(c);
+         }else
+              System.out.println("client n'existe pas !") ;
+     }
+
+      public void fermerCompte(Client client , Compte c) {
+          if(clientRepo.existsById(client.getId())){
+
+          }
+      }
 
 }
