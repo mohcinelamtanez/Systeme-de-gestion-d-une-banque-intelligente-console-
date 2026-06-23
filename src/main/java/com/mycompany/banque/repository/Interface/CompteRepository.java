@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface CompteRepository extends Repository<Compte, String> {
     List<Compte> findByTitulaire(String titulaire);
-    List<Compte> findByClientId(Integer clientId);
+    List<Compte> findByClientId(int clientId);
     List<CompteCourant> findAllComptesCourants();
     List<CompteEpargne> findAllComptesEpargne();
     List<ComptePro> findAllComptesPro();

@@ -16,6 +16,8 @@ import com.mycompany.banque.repository.Interface.Repository;
 import java.security.Provider;
 import java.util.List;
 
+import static java.util.Arrays.stream;
+
 /**
  *
  * @author USER
@@ -50,10 +52,16 @@ public class ServiceBancaire {
               System.out.println("client n'existe pas !") ;
      }
 
-      public void fermerCompte(Client client , Compte c) {
-          if(clientRepo.existsById(client.getId())){
-
-          }
+      public void fermerCompte(Client client , Compte compte) {
+          if(client.getcomptesClient()
+                  .stream().
+                  anyMatch(c-> c.getNumeroCompte().
+                          equalsIgnoreCase(compte.getNumeroCompte()))){
+              compteRepo.deleteById(compte.getNumeroCompte());
+          }else {
+              System.out.println("client ne possède pas le compte indiqué !");
       }
+
+}
 
 }

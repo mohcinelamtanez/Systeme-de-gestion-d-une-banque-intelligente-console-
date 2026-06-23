@@ -68,7 +68,7 @@ public class InMemoryCompteRepository implements CompteRepository {
     }
 
     @Override
-    public List<Compte> findByClientId(Integer clientId) {
+    public List<Compte> findByClientId(int clientId) {
         Optional<Client> clientOpt = clientRepository.findById(clientId);
         if (clientOpt.isPresent()) {
             return new ArrayList<>(clientOpt.get().getcomptesClient());
