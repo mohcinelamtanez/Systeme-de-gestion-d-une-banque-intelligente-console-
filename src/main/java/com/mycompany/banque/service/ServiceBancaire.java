@@ -92,4 +92,13 @@ public class ServiceBancaire {
             compteRepo.findById(compte.getNumeroCompte()).get().retirer(montant);
         }
     }
+
+    public void faireVirement(Compte src , Compte des , double montant ) {
+        if(compteRepo.existsById(src.getNumeroCompte()) && compteRepo.existsById(des.getNumeroCompte())){
+            src.retirer(montant);
+            des.deposer(montant);
+            System.out.println("Transaction effectué ! ") ;
+        }else
+             System.out.println("Something went wrong ! ") ;
+    }
 }

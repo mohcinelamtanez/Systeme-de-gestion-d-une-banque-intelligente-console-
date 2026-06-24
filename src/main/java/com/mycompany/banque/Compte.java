@@ -69,7 +69,8 @@ public void deposer(double montant) {
      }
 
      public void retirer(double montant) {
-     this.solde  = solde - montant;
+     if(montant > 0 )
+         this.solde  = solde - montant;
      }
 
 public boolean ajouterTransaction(Transaction transaction) { 
