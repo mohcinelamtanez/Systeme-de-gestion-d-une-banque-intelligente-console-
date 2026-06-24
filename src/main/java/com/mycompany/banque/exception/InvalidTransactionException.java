@@ -8,6 +8,10 @@ package com.mycompany.banque.exception;
  *
  * @author USER
  */
-public class InvalidTransactionException {
-    
+public class InvalidTransactionException extends RuntimeException {
+
+    public InvalidTransactionException(String message) {
+        super(message);
+    }
+
 }

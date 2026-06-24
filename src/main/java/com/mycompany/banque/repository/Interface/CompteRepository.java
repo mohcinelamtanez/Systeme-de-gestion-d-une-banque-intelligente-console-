@@ -1,6 +1,6 @@
 package com.mycompany.banque.repository.Interface;
 
-import com.mycompany.banque.*;
+import com.mycompany.banque.entity.*;
 
 import java.util.List;
 import java.util.Optional;

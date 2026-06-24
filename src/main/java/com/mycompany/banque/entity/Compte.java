@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.banque;
-import java.time.* ; 
+package com.mycompany.banque.entity;
+
+import java.time.* ;
 import java.util.*;
 /**
  *
@@ -14,7 +15,7 @@ public abstract class Compte {
  protected double solde ; 
  protected String proprietaire;
  protected LocalDate dateOuverture ; 
- protected List<Transaction> historiqueTransaction; 
+ protected List<Transaction> historiqueTransaction;
  
   
  

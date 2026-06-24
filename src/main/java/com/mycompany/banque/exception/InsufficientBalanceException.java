@@ -8,6 +8,10 @@ package com.mycompany.banque.exception;
  *
  * @author USER
  */
-public class InsufficientBalanceException {
-    
+public class InsufficientBalanceException extends RuntimeException {
+
+    public InsufficientBalanceException(String message) {
+        super(message);
+    }
+
 }

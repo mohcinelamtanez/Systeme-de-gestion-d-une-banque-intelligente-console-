@@ -8,6 +8,10 @@ package com.mycompany.banque.exception;
  *
  * @author USER
  */
-public class DailyLimitExceededException {
-    
+public class DailyLimitExceededException extends RuntimeException {
+
+    public DailyLimitExceededException(String message) {
+        super(message);
+    }
+
 }

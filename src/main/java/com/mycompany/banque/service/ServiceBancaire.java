@@ -4,18 +4,14 @@
  */
 package com.mycompany.banque.service;
 
-import com.mycompany.banque.Client;
-import com.mycompany.banque.Compte;
+import com.mycompany.banque.entity.Client;
+import com.mycompany.banque.entity.Compte;
 import com.mycompany.banque.Data.DataInitializer;
 import com.mycompany.banque.repository.Implementation.InMemoryClientRepository;
 import com.mycompany.banque.repository.Implementation.InMemoryCompteRepository;
 import com.mycompany.banque.repository.Implementation.InMemoryTransactionRepository;
-import com.mycompany.banque.repository.Interface.ClientRepository;
-import com.mycompany.banque.repository.Interface.Repository;
 
-import java.security.Provider;
 import java.util.List;
-import java.util.Optional;
 
 import static java.util.Arrays.stream;
 

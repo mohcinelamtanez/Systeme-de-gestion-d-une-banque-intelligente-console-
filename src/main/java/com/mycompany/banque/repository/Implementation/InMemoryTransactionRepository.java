@@ -1,7 +1,8 @@
 package com.mycompany.banque.repository.Implementation;
-import com.mycompany.banque.*;
-import com.mycompany.banque.Transaction;
-import com.mycompany.banque.TypeOperation;
+import com.mycompany.banque.entity.Transaction;
+import com.mycompany.banque.entity.TypeOperation;
+import com.mycompany.banque.entity.Client;
+import com.mycompany.banque.entity.Compte;
 import com.mycompany.banque.repository.Interface.TransactionRepository;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;

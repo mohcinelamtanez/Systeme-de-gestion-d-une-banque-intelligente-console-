@@ -1,7 +1,7 @@
 package com.mycompany.banque.repository.Interface;
 
-import com.mycompany.banque.Transaction;
-import com.mycompany.banque.TypeOperation;
+import com.mycompany.banque.entity.Transaction;
+import com.mycompany.banque.entity.TypeOperation;
 import java.time.LocalDateTime;
 import java.util.List;
 

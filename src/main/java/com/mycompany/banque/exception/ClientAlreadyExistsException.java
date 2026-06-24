@@ -8,6 +8,13 @@ package com.mycompany.banque.exception;
  *
  * @author USER
  */
-public class ClientAlreadyExistsException {
-    
+public class ClientAlreadyExistsException extends RuntimeException {
+
+    public ClientAlreadyExistsException() {
+    }
+
+    public ClientAlreadyExistsException(String message) {
+        super(message);
+    }
+
 }

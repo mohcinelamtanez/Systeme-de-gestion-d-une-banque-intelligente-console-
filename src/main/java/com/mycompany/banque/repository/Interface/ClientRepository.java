@@ -1,7 +1,7 @@
 package com.mycompany.banque.repository.Interface;
 
-import com.mycompany.banque.Client;
-import com.mycompany.banque.Compte;
+import com.mycompany.banque.entity.Client;
+import com.mycompany.banque.entity.Compte;
 import java.util.List;
 import java.util.Optional;
 

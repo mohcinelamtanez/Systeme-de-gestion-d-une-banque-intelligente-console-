@@ -1,6 +1,6 @@
 package com.mycompany.banque.repository.Implementation;
 
-import com.mycompany.banque.*;
+import com.mycompany.banque.entity.*;
 import com.mycompany.banque.repository.Interface.CompteRepository;
 import com.mycompany.banque.repository.Interface.ClientRepository;
 import java.util.*;

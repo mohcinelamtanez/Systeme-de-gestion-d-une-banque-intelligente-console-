@@ -2,7 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.banque;
+package com.mycompany.banque.entity;
+
 import java.time.* ;
 import java.util.*; 
 /**
@@ -16,7 +17,7 @@ public class Client {
    private LocalDate dateNaissance ; 
    private String adresseMail ; 
    private LocalDate dateCreation ; 
-   private Set<Compte> comptes; 
+   private Set<Compte> comptes;
    
    public Client(int Id , String nom , String prenom , LocalDate dateNaissance , String adresseMail , LocalDate dateCreation , Set<Compte> comptes){ 
        this.Id = Id ; 
@@ -80,7 +81,7 @@ public class Client {
    public Set<Compte> getcomptesClient(){ 
        return this.comptes; 
    }
-   
+
    public void setComptesClient(Set<Compte> comptes){ 
        this.comptes = comptes ; 
    }

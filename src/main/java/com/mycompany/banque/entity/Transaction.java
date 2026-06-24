@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.banque;
-import java.time.* ; 
+package com.mycompany.banque.entity;
+
+import java.time.* ;
 /**
  *
  * @author USER
@@ -12,8 +13,8 @@ public class Transaction {
     private int idTransaction ; 
     private double montant ;
     private LocalDateTime timeTransaction ;
-    private TypeOperation typeOperation ; 
-    private Compte compteSource ; 
+    private TypeOperation typeOperation ;
+    private Compte compteSource ;
     private Compte compteDestination ; 
     private String description ;
 

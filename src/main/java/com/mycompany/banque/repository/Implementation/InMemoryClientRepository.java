@@ -1,7 +1,7 @@
 package com.mycompany.banque.repository.Implementation;
 
-import com.mycompany.banque.Client;
-import com.mycompany.banque.Compte;
+import com.mycompany.banque.entity.Client;
+import com.mycompany.banque.entity.Compte;
 import com.mycompany.banque.repository.Interface.ClientRepository;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;

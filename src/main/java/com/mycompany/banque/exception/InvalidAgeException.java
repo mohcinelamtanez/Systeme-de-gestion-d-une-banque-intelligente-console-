@@ -8,6 +8,10 @@ package com.mycompany.banque.exception;
  *
  * @author USER
  */
-public class InvalidAgeException {
-    
+public class InvalidAgeException extends RuntimeException {
+
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+
 }
