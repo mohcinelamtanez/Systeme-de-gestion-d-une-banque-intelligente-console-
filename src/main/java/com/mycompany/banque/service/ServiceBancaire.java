@@ -16,6 +16,7 @@ import com.mycompany.banque.repository.Implementation.InMemoryCompteRepository;
 import com.mycompany.banque.repository.Implementation.InMemoryTransactionRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Arrays.stream;
 
@@ -61,25 +62,32 @@ public class ServiceBancaire {
             compteRepo.save(c);
     }
 
+//fermer un compte pour un client
 
-    public void fermerCompte(Client client, Compte compte) {
-        if (client.getcomptesClient()
+    public void fermerCompte(Client client, Compte compte) throws AccountNotFoundException{
+        if (!(client.getcomptesClient()
                 .stream().
                 anyMatch(c -> c.getNumeroCompte().
-                        equalsIgnoreCase(compte.getNumeroCompte()))) {
-            compteRepo.deleteById(compte.getNumeroCompte());
-        } else {
-            System.out.println("client ne possède pas le compte indiqué !");
+                        equalsIgnoreCase(compte.getNumeroCompte())))) {
+            throw new AccountNotFoundException("compte introuvable !") ;
         }
+        compteRepo.deleteById(compte.getNumeroCompte());
 
     }
 
-    public Client rechercherClient(Client c) {
-        return clientRepo.findById(c.getId()).get();
+    //rechercher un client
+
+    public Client rechercherClient(Client client) throws ClientNotFoundException {
+        Optional<Client> clientToFind = clientRepo.findById(client.getId());
+        if(clientToFind.isEmpty()){
+            throw new ClientNotFoundException("client recherché est introuvable !") ;
+        }
+         return clientToFind.get();
     }
 
+    // rechercher un compte
 
-    public Compte rechercherCompte(Client client, Compte compte) {
+    public Compte rechercherCompte(Client client, Compte compte) throws AccountNotFoundException{
         return clientRepo.findById(client.getId()).get().getcomptesClient().stream().
                 filter(c -> c.getNumeroCompte().equalsIgnoreCase(compte.getNumeroCompte())).toList().getFirst();
 
