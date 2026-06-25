@@ -87,11 +87,14 @@ public class ServiceBancaire {
 
     // rechercher un compte
 
-    public Compte rechercherCompte(Client client, Compte compte) throws AccountNotFoundException{
-        return clientRepo.findById(client.getId()).get().getcomptesClient().stream().
-                filter(c -> c.getNumeroCompte().equalsIgnoreCase(compte.getNumeroCompte())).toList().getFirst();
-
+    public Compte rechercherCompte(String numeroCompte) throws AccountNotFoundException{
+         Optional<Compte> foundAccount = compteRepo.findById(numeroCompte);
+         if(foundAccount.isEmpty()){
+             throw new AccountNotFoundException("compte introuvable ! ") ;
     }
+         return foundAccount.get();
+    }
+
 
     public void faireDepot(Client client, Compte compte, double montant) {
         if (clientRepo.findById(client.getId()).isPresent()) {
@@ -110,6 +113,7 @@ public class ServiceBancaire {
             compteRepo.findById(compte.getNumeroCompte()).get().retirer(montant);
         }
     }
+
 
     public void faireVirement(Compte src , Compte des , double montant ) {
         if(compteRepo.existsById(src.getNumeroCompte()) && compteRepo.existsById(des.getNumeroCompte())){

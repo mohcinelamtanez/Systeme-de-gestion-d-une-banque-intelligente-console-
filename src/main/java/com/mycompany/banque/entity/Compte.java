@@ -10,7 +10,7 @@ import java.util.*;
  *
  * @author USER
  */
-public abstract class Compte {
+public abstract class Compte implements Comparable<Compte>{
  protected String numeroCompte ; 
  protected double solde ; 
  protected String proprietaire;
@@ -88,4 +88,12 @@ public boolean ajouterTransaction(Transaction transaction) {
                 ", historiqueTransaction=" + historiqueTransaction +
                 '}';
     }
+
+   @Override
+     public int compareTo(Compte other){
+       if(this.getNumeroCompte().equals(other.getNumeroCompte())){
+           return 0 ;
+       } else
+            return -1 ;
+   }
 }
