@@ -7,6 +7,10 @@ package com.mycompany.banque.service;
 import com.mycompany.banque.entity.Client;
 import com.mycompany.banque.entity.Compte;
 import com.mycompany.banque.Data.DataInitializer;
+import com.mycompany.banque.exception.AccountAlreadyExistsException;
+import com.mycompany.banque.exception.AccountNotFoundException;
+import com.mycompany.banque.exception.ClientAlreadyExistsException;
+import com.mycompany.banque.exception.ClientNotFoundException;
 import com.mycompany.banque.repository.Implementation.InMemoryClientRepository;
 import com.mycompany.banque.repository.Implementation.InMemoryCompteRepository;
 import com.mycompany.banque.repository.Implementation.InMemoryTransactionRepository;
@@ -27,26 +31,36 @@ public class ServiceBancaire {
     InMemoryCompteRepository compteRepo = new InMemoryCompteRepository(clients, clientRepo);
     InMemoryTransactionRepository transactionRepo = new InMemoryTransactionRepository(clients);
 
+   // Ajouter un client
 
-    public void ajouterClient(Client client) {
+    public void ajouterClient(Client client) throws ClientAlreadyExistsException {
         if (clientRepo.existsById(client.getId())) {
-            System.out.println("client existe déjà");
-        } else
+                throw new ClientAlreadyExistsException("client existe déjà") ;
+        }
             clientRepo.save(client);
     }
 
-    public void supprimerClient(Client client) {
-        if (clientRepo.existsById(client.getId())) {
-            clientRepo.delete(client);
-        } else System.out.println("client introuvable :! ");
+    // Supprimer un client
+
+    public void supprimerClient(Client client) throws ClientNotFoundException{
+        if (!(clientRepo.existsById(client.getId()))) {
+            throw new ClientNotFoundException("Client introuvable !");
+        }
+             clientRepo.delete(client);
     }
 
-    public void ouvrirCompte(Client client, Compte c) {
-        if (clientRepo.existsById(client.getId())) {
+// ouvrir un compte pour un client
+
+    public void ouvrirCompte(Client client, Compte c) throws ClientNotFoundException , AccountNotFoundException {
+        if (!(clientRepo.existsById(client.getId()))) {
+            throw new ClientNotFoundException("client introuvable !") ;
+        } if(client.getcomptesClient().stream().
+                anyMatch(compte -> compte.getNumeroCompte().equalsIgnoreCase(c.getNumeroCompte()))){
+          throw new AccountAlreadyExistsException("compte déjà existant  ! ");
+        }
             compteRepo.save(c);
-        } else
-            System.out.println("client n'existe pas !");
     }
+
 
     public void fermerCompte(Client client, Compte compte) {
         if (client.getcomptesClient()
