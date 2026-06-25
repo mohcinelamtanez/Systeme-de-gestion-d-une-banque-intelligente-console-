@@ -18,7 +18,7 @@ public class InMemoryTransactionRepository implements TransactionRepository {
     public InMemoryTransactionRepository(List<Client> clients) {
         for (Client c : clients) {
             for (Compte compte : c.getcomptesClient()) {
-                for (Transaction t : compte.getHistoriqueTransaction()) {
+                for (Transaction t : compte.getHistoriqueTransactions()) {
                     transactions.put(t.getIdTransaction(), t);
                     idGenerator.updateAndGet(v -> Math.max(v, t.getIdTransaction() + 1));
                 }

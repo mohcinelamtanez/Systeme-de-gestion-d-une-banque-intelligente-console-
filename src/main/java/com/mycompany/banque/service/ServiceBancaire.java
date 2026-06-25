@@ -6,11 +6,9 @@ package com.mycompany.banque.service;
 
 import com.mycompany.banque.entity.Client;
 import com.mycompany.banque.entity.Compte;
+import com.mycompany.banque.entity.Transaction;
 import com.mycompany.banque.Data.DataInitializer;
-import com.mycompany.banque.exception.AccountAlreadyExistsException;
-import com.mycompany.banque.exception.AccountNotFoundException;
-import com.mycompany.banque.exception.ClientAlreadyExistsException;
-import com.mycompany.banque.exception.ClientNotFoundException;
+import com.mycompany.banque.exception.*;
 import com.mycompany.banque.repository.Implementation.InMemoryClientRepository;
 import com.mycompany.banque.repository.Implementation.InMemoryCompteRepository;
 import com.mycompany.banque.repository.Implementation.InMemoryTransactionRepository;
@@ -122,5 +120,82 @@ public class ServiceBancaire {
             System.out.println("Transaction effectué ! ") ;
         }else
              System.out.println("Something went wrong ! ") ;
+    }
+
+    public void effectuerTransaction(Transaction transaction)
+            throws AccountNotFoundException,
+            InsufficientBalanceException,
+            InvalidTransactionException {
+
+        switch (transaction.getTypeOperation()) {
+
+            case depot -> {
+                Compte compte = compteRepo.findById(
+                        transaction.getCompteDestination().getNumeroCompte()
+                ).orElseThrow(() ->
+                        new AccountNotFoundException("Compte introuvable !"));
+
+                if (transaction.getMontant() <= 0) {
+                    throw new InvalidTransactionException("Montant invalide !");
+                }
+
+                compte.deposer(transaction.getMontant());
+                compte.getHistoriqueTransactions().add(transaction);
+                transactionRepo.save(transaction);
+            }
+
+            case retrait -> {
+                Compte compte = compteRepo.findById(
+                        transaction.getCompteSource().getNumeroCompte()
+                ).orElseThrow(() ->
+                        new AccountNotFoundException("Compte introuvable !"));
+
+                if (transaction.getMontant() <= 0) {
+                    throw new InvalidTransactionException("Montant invalide !");
+                }
+
+                if (compte.getSolde() < transaction.getMontant()) {
+                    throw new InsufficientBalanceException("Solde insuffisant !");
+                }
+
+                compte.retirer(transaction.getMontant());
+                compte.getHistoriqueTransactions().add(transaction);
+                transactionRepo.save(transaction);
+            }
+
+            case virementSortant -> {
+                Compte source = compteRepo.findById(
+                        transaction.getCompteSource().getNumeroCompte()
+                ).orElseThrow(() ->
+                        new AccountNotFoundException("Compte source introuvable !"));
+
+                Compte destination = compteRepo.findById(
+                        transaction.getCompteDestination().getNumeroCompte()
+                ).orElseThrow(() ->
+                        new AccountNotFoundException("Compte destination introuvable !"));
+
+                if (transaction.getMontant() <= 0) {
+                    throw new InvalidTransactionException("Montant invalide !");
+                }
+
+                if (source.getNumeroCompte().equalsIgnoreCase(destination.getNumeroCompte())) {
+                    throw new InvalidTransactionException("Impossible de virer vers le même compte !");
+                }
+
+                if (source.getSolde() < transaction.getMontant()) {
+                    throw new InsufficientBalanceException("Solde insuffisant !");
+                }
+
+                source.retirer(transaction.getMontant());
+                destination.deposer(transaction.getMontant());
+
+                source.getHistoriqueTransactions().add(transaction);
+                destination.getHistoriqueTransactions().add(transaction);
+
+                transactionRepo.save(transaction);
+            }
+
+            default -> throw new InvalidTransactionException("Type d'opération non supporté !");
+        }
     }
 }

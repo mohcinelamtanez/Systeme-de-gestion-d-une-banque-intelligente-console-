@@ -109,7 +109,7 @@ public class InMemoryCompteRepository implements CompteRepository {
     public void addTransaction(String numeroCompte, Transaction transaction) {
         Optional<Compte> compteOpt = findById(numeroCompte);
         compteOpt.ifPresent(compte -> {
-            compte.getHistoriqueTransaction().add(transaction);
+            compte.getHistoriqueTransactions().add(transaction);
             // Mettre à jour le solde si nécessaire (selon la logique métier)
             // Par exemple, si c'est un dépôt, ajouter le montant, etc.
             // On peut laisser le service gérer cela, ou le faire ici.

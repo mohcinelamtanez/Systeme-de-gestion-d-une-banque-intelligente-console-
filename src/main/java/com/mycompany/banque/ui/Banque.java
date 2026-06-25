@@ -11,7 +11,7 @@ package com.mycompany.banque.ui;
 public class Banque {
     
     public static void main(String[] args) {
-       
+
 
           
          

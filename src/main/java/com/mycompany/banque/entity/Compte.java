@@ -61,7 +61,7 @@ public void  setTransaction(List<Transaction> transactions){
     this.historiqueTransaction = transactions ;    
 }
 
-public List<Transaction> getHistoriqueTransaction(){
+public List<Transaction> getHistoriqueTransactions(){
      return this.historiqueTransaction ;
 }
 public void deposer(double montant) { 

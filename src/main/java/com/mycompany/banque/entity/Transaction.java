@@ -52,7 +52,14 @@ public class Transaction {
     public void setTimeTransaction(LocalDateTime timeTransaction ) {
         this.timeTransaction = timeTransaction ;
     }
-    
+
+    public Compte getCompteSource(){
+        return this.compteSource;
+    }
+
+    public Compte getCompteDestination(){
+        return this.compteDestination;
+    }
     public String getDescription(){ 
         return this.description ; 
     }
