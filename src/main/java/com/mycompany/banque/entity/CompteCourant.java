@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class CompteCourant extends Compte {
     
-    private final double fraisMensuel = 20 ;  
+    private  double fraisMensuel = 20 ;
     private final double limiteDecouvert = 40; 
     
     public CompteCourant
@@ -24,4 +24,6 @@ public class CompteCourant extends Compte {
      super.dateOuverture = dateOuverture ; 
      super.historiqueTransaction = historiqueTransaction ; 
  }
+
+
 }

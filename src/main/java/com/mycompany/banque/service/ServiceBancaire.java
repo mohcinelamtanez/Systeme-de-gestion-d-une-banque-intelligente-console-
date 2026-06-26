@@ -198,4 +198,9 @@ public class ServiceBancaire {
             default -> throw new InvalidTransactionException("Type d'opération non supporté !");
         }
     }
+
+    public void trouverClientLePlusRiche(){
+       // compteRepo.findAll().stream().filter();
+
+    }
 }

@@ -22,5 +22,6 @@ public class ComptePro extends Compte {
      super.dateOuverture = dateOuverture ; 
      super.historiqueTransaction = historiqueTransaction ; 
  }
+
    
 }
