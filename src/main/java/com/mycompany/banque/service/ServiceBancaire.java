@@ -13,9 +13,8 @@ import com.mycompany.banque.repository.Implementation.InMemoryClientRepository;
 import com.mycompany.banque.repository.Implementation.InMemoryCompteRepository;
 import com.mycompany.banque.repository.Implementation.InMemoryTransactionRepository;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.Arrays.stream;
 
@@ -25,50 +24,51 @@ import static java.util.Arrays.stream;
  */
 public class ServiceBancaire {
 
-
+    List<Client> clientes = new ArrayList<>();
     List<Client> clients = DataInitializer.initClients();
     InMemoryClientRepository clientRepo = new InMemoryClientRepository(clients);
     InMemoryCompteRepository compteRepo = new InMemoryCompteRepository(clients, clientRepo);
     InMemoryTransactionRepository transactionRepo = new InMemoryTransactionRepository(clients);
 
-   // Ajouter un client
+    // Ajouter un client
 
     public void ajouterClient(Client client) throws ClientAlreadyExistsException {
         if (clientRepo.existsById(client.getId())) {
-                throw new ClientAlreadyExistsException("client existe déjà") ;
+            throw new ClientAlreadyExistsException("client existe déjà");
         }
-            clientRepo.save(client);
+        clientRepo.save(client);
     }
 
     // Supprimer un client
 
-    public void supprimerClient(Client client) throws ClientNotFoundException{
+    public void supprimerClient(Client client) throws ClientNotFoundException {
         if (!(clientRepo.existsById(client.getId()))) {
             throw new ClientNotFoundException("Client introuvable !");
         }
-             clientRepo.delete(client);
+        clientRepo.delete(client);
     }
 
 // ouvrir un compte pour un client
 
-    public void ouvrirCompte(Client client, Compte c) throws ClientNotFoundException , AccountNotFoundException {
+    public void ouvrirCompte(Client client, Compte c) throws ClientNotFoundException, AccountNotFoundException {
         if (!(clientRepo.existsById(client.getId()))) {
-            throw new ClientNotFoundException("client introuvable !") ;
-        } if(client.getcomptesClient().stream().
-                anyMatch(compte -> compte.getNumeroCompte().equalsIgnoreCase(c.getNumeroCompte()))){
-          throw new AccountAlreadyExistsException("compte déjà existant  ! ");
+            throw new ClientNotFoundException("client introuvable !");
         }
-            compteRepo.save(c);
+        if (client.getcomptesClient().stream().
+                anyMatch(compte -> compte.getNumeroCompte().equalsIgnoreCase(c.getNumeroCompte()))) {
+            throw new AccountAlreadyExistsException("compte déjà existant  ! ");
+        }
+        compteRepo.save(c);
     }
 
 //fermer un compte pour un client
 
-    public void fermerCompte(Client client, Compte compte) throws AccountNotFoundException{
+    public void fermerCompte(Client client, Compte compte) throws AccountNotFoundException {
         if (!(client.getcomptesClient()
                 .stream().
                 anyMatch(c -> c.getNumeroCompte().
                         equalsIgnoreCase(compte.getNumeroCompte())))) {
-            throw new AccountNotFoundException("compte introuvable !") ;
+            throw new AccountNotFoundException("compte introuvable !");
         }
         compteRepo.deleteById(compte.getNumeroCompte());
 
@@ -78,20 +78,20 @@ public class ServiceBancaire {
 
     public Client rechercherClient(Client client) throws ClientNotFoundException {
         Optional<Client> clientToFind = clientRepo.findById(client.getId());
-        if(clientToFind.isEmpty()){
-            throw new ClientNotFoundException("client recherché est introuvable !") ;
+        if (clientToFind.isEmpty()) {
+            throw new ClientNotFoundException("client recherché est introuvable !");
         }
-         return clientToFind.get();
+        return clientToFind.get();
     }
 
     // rechercher un compte
 
-    public Compte rechercherCompte(String numeroCompte) throws AccountNotFoundException{
-         Optional<Compte> foundAccount = compteRepo.findById(numeroCompte);
-         if(foundAccount.isEmpty()){
-             throw new AccountNotFoundException("compte introuvable ! ") ;
-    }
-         return foundAccount.get();
+    public Compte rechercherCompte(String numeroCompte) throws AccountNotFoundException {
+        Optional<Compte> foundAccount = compteRepo.findById(numeroCompte);
+        if (foundAccount.isEmpty()) {
+            throw new AccountNotFoundException("compte introuvable ! ");
+        }
+        return foundAccount.get();
     }
 
 
@@ -114,13 +114,13 @@ public class ServiceBancaire {
     }
 
 
-    public void faireVirement(Compte src , Compte des , double montant ) {
-        if(compteRepo.existsById(src.getNumeroCompte()) && compteRepo.existsById(des.getNumeroCompte())){
+    public void faireVirement(Compte src, Compte des, double montant) {
+        if (compteRepo.existsById(src.getNumeroCompte()) && compteRepo.existsById(des.getNumeroCompte())) {
             src.retirer(montant);
             des.deposer(montant);
-            System.out.println("Transaction effectué ! ") ;
-        }else
-             System.out.println("Something went wrong ! ") ;
+            System.out.println("Transaction effectué ! ");
+        } else
+            System.out.println("Something went wrong ! ");
     }
 
     public void effectuerTransaction(Transaction transaction)
@@ -208,6 +208,19 @@ public class ServiceBancaire {
                 .map(compte -> clientRepo.findByPrenom(compte.getProprietaire()).getFirst())
                 .orElse(null);
     }
+    public Compte compteWithMoreTransactions() {
+        return compteRepo.findAll().stream()
+                .max(Comparator.comparing(
+                        compte -> compte.getHistoriqueTransactions().size()
+                ))
+                .orElse(null);
+    }
 
-
+    public double calculeSommeTotal() {
+        double Total = 0 ;
+        for (Compte c : compteRepo.findAll()) {
+             Total = Total + c.getSolde();
+        }
+        return Total ;
+    }
 }
