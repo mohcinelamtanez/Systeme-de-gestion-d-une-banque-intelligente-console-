@@ -223,4 +223,26 @@ public class ServiceBancaire {
         }
         return Total ;
     }
+
+    public  void findInactifClientFor6Months() {
+
+    }
+   // trouver les transactions supérieures à un montant donnée
+
+    public List<Transaction> transactionsMore(double Montant) {
+        return transactionRepo.findAll().
+                stream().
+                filter(transaction -> transaction.getMontant() > Montant).
+                toList();
+    }
+
+    // detecter les operations suspect qui depasse un montant de 10000
+
+    public List<Transaction> detectSuspectOperations() {
+        return transactionRepo.findAll().stream().
+                filter(transaction -> transaction.getMontant() > 10000 ).
+                toList();
+    }
+
+
 }
