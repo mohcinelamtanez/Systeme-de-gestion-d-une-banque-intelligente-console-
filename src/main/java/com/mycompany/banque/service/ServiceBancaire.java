@@ -13,6 +13,7 @@ import com.mycompany.banque.repository.Implementation.InMemoryClientRepository;
 import com.mycompany.banque.repository.Implementation.InMemoryCompteRepository;
 import com.mycompany.banque.repository.Implementation.InMemoryTransactionRepository;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -199,8 +200,14 @@ public class ServiceBancaire {
         }
     }
 
-    public void trouverClientLePlusRiche(){
-       // compteRepo.findAll().stream().filter();
+    public Client trouverClientLePlusRiche() {
+        List<Compte> comptes = compteRepo.findAll();
 
+        return comptes.stream()
+                .max(Comparator.comparing(Compte::getSolde))
+                .map(compte -> clientRepo.findByPrenom(compte.getProprietaire()).getFirst())
+                .orElse(null);
     }
+
+
 }
