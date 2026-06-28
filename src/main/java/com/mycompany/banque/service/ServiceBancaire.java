@@ -260,8 +260,16 @@ public class ServiceBancaire {
 
      // Obtenir les 5 clients les plus riches
 
-   /* public List<Client> ObtainMostFiveRichClients(){
-        //return compteRepo.findAll().stream().collect(Collectors.groupingBy(Compte :: get))
-    }*/
+    public List<Client> obtainMostFiveRichClients() {
+        return compteRepo.findAll().stream()
+                .sorted(Comparator.comparing(Compte::getSolde).reversed())
+                .limit(5)
+                .map(compte -> clientRepo.findByPrenom(compte.getProprietaire()).getFirst())
+                .collect(Collectors.toList());
+    }
+
+    // calculer le nombre d'operations par client
+
+
 
 }
