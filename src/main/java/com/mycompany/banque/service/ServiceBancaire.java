@@ -270,6 +270,15 @@ public class ServiceBancaire {
 
     // calculer le nombre d'operations par client
 
+    public Map<String, Long> numberOperationPerClient() {
+        return compteRepo.findAll().stream()
+                .collect(Collectors.groupingBy(
+                        Compte::getProprietaire,
+                        Collectors.summingLong(
+                                compte -> compte.getHistoriqueTransactions().size()
+                        )
+                ));
+    }
 
 
 }
