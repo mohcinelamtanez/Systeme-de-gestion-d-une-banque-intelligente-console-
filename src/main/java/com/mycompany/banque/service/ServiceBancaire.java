@@ -8,6 +8,7 @@ import com.mycompany.banque.entity.Client;
 import com.mycompany.banque.entity.Compte;
 import com.mycompany.banque.entity.Transaction;
 import com.mycompany.banque.Data.DataInitializer;
+import com.mycompany.banque.entity.TypeOperation;
 import com.mycompany.banque.exception.*;
 import com.mycompany.banque.repository.Implementation.InMemoryClientRepository;
 import com.mycompany.banque.repository.Implementation.InMemoryCompteRepository;
@@ -233,7 +234,7 @@ public class ServiceBancaire {
         return transactionRepo.findAll().
                 stream().
                 filter(transaction -> transaction.getMontant() > Montant).
-                toList();
+                collect(Collectors.toList());
     }
 
     // detecter les operations suspect qui depasse un montant de 10000
@@ -243,6 +244,24 @@ public class ServiceBancaire {
                 filter(transaction -> transaction.getMontant() > 10000 ).
                 toList();
     }
+// Java streams et lambda
+   // regrouper les transactions par type
 
+     public Map<TypeOperation, List<Transaction>> groupTransactionsPerType(){
+         return transactionRepo.findAll().stream().
+                  collect(Collectors.groupingBy(Transaction :: getTypeOperation , Collectors.toList()));
+     }
+
+     // calculer le nombre total des transactions de type depot
+
+     public Long calculateTotalDepot(){
+        return groupTransactionsPerType().get(TypeOperation.depot).stream().count();
+     }
+
+     // Obtenir les 5 clients les plus riches
+
+   /* public List<Client> ObtainMostFiveRichClients(){
+        //return compteRepo.findAll().stream().collect(Collectors.groupingBy(Compte :: get))
+    }*/
 
 }
