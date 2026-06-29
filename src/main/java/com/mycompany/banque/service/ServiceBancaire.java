@@ -38,6 +38,7 @@ public class ServiceBancaire {
             throw new ClientAlreadyExistsException("client existe déjà");
         }
         clientRepo.save(client);
+        System.out.println("client added successfully ! ");
     }
 
     // Supprimer un client

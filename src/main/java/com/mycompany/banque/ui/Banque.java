@@ -5,6 +5,9 @@
 package com.mycompany.banque.ui;
 
 import com.mycompany.banque.service.ServiceBancaire;
+import com.mycompany.banque.entity.Client;
+import com.mycompany.banque.entity.Compte ;
+import com.mycompany.banque.factory.* ;
 
 /**
  *
@@ -17,8 +20,10 @@ public class Banque {
   // tester les methodes provisoirement
 
         ServiceBancaire serviceBancaire  = new ServiceBancaire();
-        System.out.println(serviceBancaire.clients);
 
-    
+        Client client = ClientFactory.createStandardClient();
+        serviceBancaire.ajouterClient(client);
+
+
     }
 }
