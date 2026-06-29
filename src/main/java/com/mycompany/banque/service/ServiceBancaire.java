@@ -26,7 +26,7 @@ import static java.util.Arrays.stream;
 public class ServiceBancaire {
 
     List<Client> clientes = new ArrayList<>();
-    List<Client> clients = DataInitializer.initClients();
+    public List<Client> clients = DataInitializer.initClients();
     InMemoryClientRepository clientRepo = new InMemoryClientRepository(clients);
     InMemoryCompteRepository compteRepo = new InMemoryCompteRepository(clients, clientRepo);
     InMemoryTransactionRepository transactionRepo = new InMemoryTransactionRepository(clients);

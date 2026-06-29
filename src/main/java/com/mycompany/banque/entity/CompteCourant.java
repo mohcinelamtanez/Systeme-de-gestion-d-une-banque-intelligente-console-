@@ -17,12 +17,13 @@ public class CompteCourant extends Compte {
     private final double limiteDecouvert = 40; 
     
     public CompteCourant
-        (String numeroCompte , double solde , String proprietaire , LocalDate dateOuverture , List<Transaction> historiqueTransaction){
-     super.numeroCompte = numeroCompte ; 
-     super.solde = solde ; 
-     super.proprietaire = proprietaire ; 
-     super.dateOuverture = dateOuverture ; 
-     super.historiqueTransaction = historiqueTransaction ; 
+            (String numeroCompte,
+             double solde,
+             String proprietaire,
+             LocalDate dateOuverture,
+             List<Transaction> historiqueTransaction){
+     super(numeroCompte , solde , proprietaire , dateOuverture , historiqueTransaction);
+
  }
 
 

@@ -18,6 +18,21 @@ public abstract  class Compte  {
     protected List<Transaction> historiqueTransaction;
 
 
+
+    public Compte(String numeroCompte,
+                  double solde,
+                  String proprietaire,
+                  LocalDate dateOuverture,
+                  List<Transaction> historiqueTransaction) {
+
+        this.numeroCompte = numeroCompte;
+        this.solde = solde;
+        this.proprietaire = proprietaire;
+        this.dateOuverture = dateOuverture;
+        this.historiqueTransaction = historiqueTransaction;
+    }
+
+
     public String getNumeroCompte() {
         return this.numeroCompte;
     }
