@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.banque.service;
 
 import com.mycompany.banque.entity.Client;
@@ -221,7 +218,7 @@ public class ServiceBancaire {
     public double calculeSommeTotal() {
         double Total = 0 ;
         for (Compte c : compteRepo.findAll()) {
-             Total = Total + c.getSolde();
+            Total = Total + c.getSolde();
         }
         return Total ;
     }
@@ -229,7 +226,7 @@ public class ServiceBancaire {
     public  void findInactifClientFor6Months() {
 
     }
-   // trouver les transactions supérieures à un montant donnée
+    // trouver les transactions supérieures à un montant donnée
 
     public List<Transaction> transactionsMore(double Montant) {
         return transactionRepo.findAll().
@@ -246,20 +243,20 @@ public class ServiceBancaire {
                 toList();
     }
 // Java streams et lambda
-   // regrouper les transactions par type
+    // regrouper les transactions par type
 
-     public Map<TypeOperation, List<Transaction>> groupTransactionsPerType(){
-         return transactionRepo.findAll().stream().
-                  collect(Collectors.groupingBy(Transaction :: getTypeOperation , Collectors.toList()));
-     }
+    public Map<TypeOperation, List<Transaction>> groupTransactionsPerType(){
+        return transactionRepo.findAll().stream().
+                collect(Collectors.groupingBy(Transaction :: getTypeOperation , Collectors.toList()));
+    }
 
-     // calculer le nombre total des transactions de type depot
+    // calculer le nombre total des transactions de type depot
 
-     public Long calculateTotalDepot(){
+    public Long calculateTotalDepot(){
         return groupTransactionsPerType().get(TypeOperation.depot).stream().count();
-     }
+    }
 
-     // Obtenir les 5 clients les plus riches
+    // Obtenir les 5 clients les plus riches
 
     public List<Client> obtainMostFiveRichClients() {
         return compteRepo.findAll().stream()
